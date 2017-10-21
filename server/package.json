@@ -1,0 +1,21 @@
+{
+  "name": "bust",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bi Kim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bi-kim/bust/issues"
+  },
+  "homepage": "https://github.com/bi-kim/bust#readme",
+  "dependencies": {
+    "request": "^2.83.0",
+    "restify": "^6.2.0",
+    "restify-cors-middleware": "^1.0.1",
+    "swagger-restify": "^1.0.1"
+  }
+}
