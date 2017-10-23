@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import BusDataStore from './../../BusDataStore';
-// import axios from 'axios';
-// import CryptoJS from 'crypto-js';
-// import { Config } from '../conf';
-// import { Utils, Security } from '../utils';
 
 class Seat extends Component {
     constructor(props) {
@@ -32,18 +28,25 @@ class Seat extends Component {
             let d = "";
             if(data.hasOwnProperty("data")) {
                 let tempData = data.data;
-                d = tempData.reduce( (accumulator, currentValue, index) => {
-                    let temp = "";
-                    if(index === 1) {
-                        temp += '<li> <a target="_blank" href="https://section.cafe.naver.com/CombinationSearch.nhn?query='+accumulator.USER_NUMB+'&where=">'+accumulator.USER_NUMB+'</a></li>';
-                        return temp;
-                    } else {
-                        temp += '<li> <a target="_blank" href="https://section.cafe.naver.com/CombinationSearch.nhn?query='+currentValue.USER_NUMB+'&where=">'+currentValue.USER_NUMB+'</a></li>';
-                    }
-                    return accumulator + temp;
-                });
+                if(tempData.length > 1) {
+                    d = tempData.reduce( (accumulator, currentValue, index) => {
+                        let temp = "";
+                        if(index === 1) {
+                            temp += '<li> <a target="_blank" href="https://section.cafe.naver.com/CombinationSearch.nhn?query='+accumulator.USER_NUMB+'&where=">'+accumulator.USER_NUMB+'</a></li>';
+                            temp += '<li> <a target="_blank" href="https://section.cafe.naver.com/CombinationSearch.nhn?query='+currentValue.USER_NUMB+'&where=">'+currentValue.USER_NUMB+'</a></li>';
+                            return temp;
+                        } else {
+                            temp += '<li> <a target="_blank" href="https://section.cafe.naver.com/CombinationSearch.nhn?query='+currentValue.USER_NUMB+'&where=">'+currentValue.USER_NUMB+'</a></li>';
+                        }
+                        return accumulator + temp;
+                    });
+                }else if(tempData.length === 0) {
+                    d = "데이터가 없습니다.";
+                } else {
+                    d += '<li> <a target="_blank" href="https://section.cafe.naver.com/CombinationSearch.nhn?query='+tempData[0].USER_NUMB+'&where=">'+tempData[0].USER_NUMB+'</a></li>';                    
+                }
                 return (
-                    <ul dangerouslySetInnerHTML={{ __html: d }}></ul>    
+                    <ul dangerouslySetInnerHTML={{ __html: d }}></ul>
                 )
             }
             return "데이터가 없습니다.";
