@@ -591,6 +591,28 @@ server.post("/api/insertStntBusReservation", (req, res) => {
  *          required: true
  *          dataType: string
  */
+/**
+   * @swagger
+   * models:
+   *   BusPanalty:
+   *     id: CancelBusReservation
+   *     properties:
+   *        BURE_SEAT:
+   *            type: String
+   *            description: 버스 앉은 자리
+   *        BUSS_INDX:
+   *            type: String
+   *            description: 버스 인덱스
+   *        BUSS_STTE:
+   *            type: String
+   *            description: 버스 운행 지역
+   *        BUSS_TIME:
+   *            type: String
+   *            description: 버스 출발 시간
+   *        USER_NUMB:
+   *            type: String
+   *            description: 학번
+   */
 server.post("/api/cancelStntBusReservation", (req, res) => {
     var ck = new CK();
     ck.sendData({
