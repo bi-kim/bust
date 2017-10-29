@@ -5,6 +5,7 @@ import Login from './component/Login';
 import Navbar from './component/nav/Navbar';
 import Table from './component/Table';
 import Seat from './component/seat/Seat';
+import PopupCancelReservation from './component/popupCancelReservation/PopupCancelReservation';
 
 import LoginStore from './LoginStore';
 // import LoginAction from './LoginAction';
@@ -72,6 +73,7 @@ class App extends Component {
           <Table STYLENAME={"BusList"}        LOGIN_COND={this.state.LOGIN_COND} URL={"/getStntBusList"} />
           <Table STYLENAME={"BusDetailList"}  LOGIN_COND={this.state.LOGIN_COND} URL={"/getStntBusDetailList"}  />
           <Seat />
+          <PopupCancelReservation />
         </div>
 
       </div>

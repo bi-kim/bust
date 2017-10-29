@@ -41,6 +41,8 @@ AccountStore.dispatchToken = AppDispatcher.register((action) => {
             account.LOGIN_COND  = "true";
             __emitter.emit(CHANGE_EVENT);
             break;
+        default:
+            break;
     }
 });
 

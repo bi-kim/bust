@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+.PopupCancelReservation {
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+.PopupCancelReservation .modalShow {
+    display: block;
+    opacity: 1;
+}
+
+.PopupCancelReservation .container .c-row .btn-seat {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+}

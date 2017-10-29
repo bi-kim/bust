@@ -22,6 +22,8 @@ BusDataStore.dispatchToken = AppDispatcher.register((action) => {
             seatData = action; // action에 필요한 데이터 추출해서 저장하기.
             __emitter.emit(CHANGE_EVENT);
             break;
+        default :
+            break;
     }
 });
 

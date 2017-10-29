@@ -4,7 +4,7 @@ import $ from 'jquery';
 import axios from 'axios';
 
 import { Config } from '../conf';
-import { Utils, Security } from '../utils';
+import { Security } from '../utils';
 import LoginStore from '../LoginStore';
 
 import BusDataAction from './BusDataAction';
@@ -42,31 +42,6 @@ class Table extends Component {
                 this.setState({ seatData: d });
                 BusDataAction.sendSeaatData(this.state.seatData);
             });
-
-            // let confirmBool = confirm("이 버스로 에약을 진행할까요?");
-            // if (confirmBool == true) {
-            //     let get = LoginStore.getState();
-            //     let security = new Security();
-            //     let encryptData = security.encryptByUUID({
-            //         BUSS_INDX: d.BUSS_INDX,
-            //         BUSS_STTE: d.BUSS_STTE,
-            //         BUSS_TIME: d.BUSS_TIME, 
-            //         USER_NUMB: LoginStore.getState().USER_NUMB,
-            //         STNT_NUMB: LoginStore.getState().USER_NUMB  //getStntBusDetailList에 필요한 데이터
-            //     }, get.uuid, get.sid);
-    
-            //     axios.post(Config.host + "/getBusSeatList", {
-            //         datas: encryptData,
-            //         sid: LoginStore.getState().sid
-            //     }).then((response) => {
-            //         let d = JSON.parse(JSON.parse(security.decryptByUUID(JSON.parse(response.data).data, get.uuid)));
-            //         this.setState({ seatData: d });
-            //     });
-
-            //     alert("예약을 진행합니다.");
-            // } else {
-            //     alert("예약하지 않았습니다.");
-            // }
         }
     }
 
@@ -190,8 +165,7 @@ class Table extends Component {
             return "데이터가 없습니다.";
         }
         return (
-            <div className={`table-reservation ${ this.props.STYLENAME }`} onClick={this.handleTRClick} style={{ display: this.props.LOGIN_COND == "false" ? 'none' : 'block' }}>
-                {mapToComponent(this.state.data)}</div>
+            <div className={`table-reservation ${ this.props.STYLENAME }`} onClick={this.handleTRClick} style={{ display: this.props.LOGIN_COND === "false" ? 'none' : 'block' }}>{mapToComponent(this.state.data)}</div>
         );
     }
 }
